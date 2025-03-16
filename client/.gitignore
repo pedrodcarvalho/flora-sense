@@ -1,0 +1,8 @@
+# Package
+node_modules
+
+# Build files
+dist
+
+# Environment Variables
+.env

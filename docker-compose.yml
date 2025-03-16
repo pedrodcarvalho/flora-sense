@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.backend
+    ports:
+      - '5000:5000'
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=docker
+      - MONGO_URI=mongodb://host.docker.internal:27017/flora-sense
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.frontend
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - backend
