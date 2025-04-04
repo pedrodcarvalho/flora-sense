@@ -1,18 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { AuthState } from '../../types/authTypes.ts';
+
 const AUTH_URL = `${import.meta.env.VITE_API_URL}/auth`;
 
 // Get user from local storage
 const user = localStorage.getItem('user')
   ? JSON.parse(localStorage.getItem('user')!)
   : null;
-
-interface AuthState {
-  user: any;
-  loading: boolean;
-  error: string | null;
-}
 
 const initialState: AuthState = {
   user,

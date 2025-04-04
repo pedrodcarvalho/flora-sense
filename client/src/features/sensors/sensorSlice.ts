@@ -1,20 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import { SensorState } from '../../types/sensorTypes';
+
 const API_URL = `${import.meta.env.VITE_API_URL}/sensors`;
-
-interface Sensor {
-  temperature: number;
-  moisture: number;
-  light: number;
-  timestamp: string;
-}
-
-interface SensorState {
-  data: Sensor[];
-  loading: boolean;
-  error: string | null;
-}
 
 const initialState: SensorState = {
   data: [],
