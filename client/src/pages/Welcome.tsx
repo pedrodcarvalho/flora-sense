@@ -30,7 +30,7 @@ const Welcome = () => {
           >
             FloraSense
           </motion.h1>
-          <motion.h3
+          <motion.h2
             className="text-xl text-gray-900 md:text-2xl font-bold text-center md:text-left"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -38,7 +38,7 @@ const Welcome = () => {
           >
             Fortalecendo <i className="text-gray-50 underline">plantas</i> com
             inteligência – Monitore, Analise e Cuide sem esforço!
-          </motion.h3>
+          </motion.h2>
           <motion.p
             className="text-sm md:text-base text-gray-900"
             initial={{ y: -20, opacity: 0 }}
@@ -51,11 +51,11 @@ const Welcome = () => {
           </motion.p>
           <motion.button
             onClick={handleGetStarted}
-            className="bg-green-500 p-2 rounded-lg"
+            className="bg-[#13863f] p-2 rounded-lg"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            whileHover={{ scale: 1.1, backgroundColor: '#38a169' }} // Slightly brighter green
+            whileHover={{ scale: 1.1, backgroundColor: '#1a9d4b' }}
             whileTap={{ scale: 0.9 }}
           >
             <span className="text-white font-bold text-lg">
