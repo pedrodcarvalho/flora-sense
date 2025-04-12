@@ -13,9 +13,9 @@ const Welcome = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <motion.div className="flex flex-col md:flex-row items-center justify-center h-screen w-full bg-gradient-to-r from-primary-light to-primary gap-10 p-5">
+    <div className="bg-gradient-to-r from-primary-light to-primary">
+      <Navbar textColor="text-gray-50" />
+      <motion.div className="flex flex-col md:flex-row items-center justify-center h-screen w-full gap-10 p-5">
         <motion.div
           className="flex flex-col gap-5 w-full md:w-96 text-center md:text-left"
           initial={{ x: -400, opacity: 0 }}

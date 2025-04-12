@@ -5,7 +5,9 @@ import { IoMenu } from 'react-icons/io5';
 
 import Logo from '../assets/logo.png';
 
-const Navbar = () => {
+const Navbar = ({ ...props }) => {
+  const { textColor } = props;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -14,7 +16,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="bg-gradient-to-r from-primary-light to-primary p-4"
+      className="bg-transparent p-4"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1 }}
@@ -33,7 +35,7 @@ const Navbar = () => {
             transition={{ duration: 1 }}
           />
           <motion.div
-            className="ml-2 text-2xl text-gray-50 font-extrabold hover:underline"
+            className={`ml-2 text-2xl ${textColor} font-extrabold hover:underline`}
             whileHover={{ scale: 1.1 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -77,7 +79,7 @@ const Navbar = () => {
             >
               <Link
                 to={`/${text.toLowerCase()}`}
-                className="block mt-2 md:mt-0 text-gray-100 font-extrabold text-lg hover:underline"
+                className={`block mt-2 md:mt-0 ${textColor} font-extrabold text-lg hover:underline`}
               >
                 {text}
               </Link>
@@ -90,7 +92,7 @@ const Navbar = () => {
           >
             <Link
               to="/login"
-              className="border-primary-light border-solid border-2 px-4 py-1 rounded-lg text-gray-50 font-bold text-md"
+              className={`border-primary-light border-solid border-2 px-4 py-1 rounded-lg ${textColor} font-bold text-md`}
             >
               Entrar
             </Link>
@@ -98,7 +100,7 @@ const Navbar = () => {
         </motion.div>
       </div>
       <motion.div
-        className="hidden md:block border-t border-gray-50 mt-2"
+        className={`hidden md:block border-t ${textColor} mt-2`}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1, delay: 1 }}

@@ -8,13 +8,13 @@ const generateToken = (id) => {
 
 // User Registration
 const registerUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { firstName, lastName, username, password } = req.body;
 
   try {
     const userExists = await User.findOne({ username });
     if (userExists) return res.status(400).json({ message: 'User already exists' });
 
-    const user = await User.create({ username, password });
+    const user = await User.create({ firstName, lastName, username, password });
     if (user) {
       res.status(201).json({ _id: user.id, username: user.username, token: generateToken(user.id) });
     } else {
@@ -41,4 +41,13 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser = (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Could not log out' });
+    }
+    res.status(200).json({ message: 'Logged out successfully' });
+  });
+};
+
+module.exports = { registerUser, loginUser, logoutUser };
