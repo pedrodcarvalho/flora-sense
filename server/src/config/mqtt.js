@@ -21,6 +21,7 @@ mqttClient.on('message', async (topic, message) => {
       humidity: data.humidity,
       moisture: data.moisture,
       light: data.light,
+      score: data.score,
     });
     await newSensor.save();
     console.log('Sensor data saved to MongoDB');

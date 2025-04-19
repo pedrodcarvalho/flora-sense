@@ -13,8 +13,8 @@ const getSensors = async (req, res) => {
 // Add new sensor data
 const addSensorData = async (req, res) => {
   try {
-    const { temperature, moisture, light } = req.body;
-    const newSensor = new Sensor({ temperature, moisture, light });
+    const { temperature, humidity, moisture, light, score } = req.body;
+    const newSensor = new Sensor({ temperature, humidity, moisture, light, score });
     await newSensor.save();
     res.status(201).json(newSensor);
   } catch (error) {
