@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+import { logout } from '../features/auth/authSlice';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { IoMenu } from 'react-icons/io5';
 
@@ -8,10 +12,20 @@ import Logo from '../assets/logo.png';
 const Navbar = ({ ...props }) => {
   const { textColor } = props;
 
+  const navigate = useNavigate();
+  const user = useSelector((state: RootState) => state.auth.user);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
+    localStorage.removeItem('user');
+    setIsOpen(false);
+    navigate('/');
+    window.location.reload();
   };
 
   return (
@@ -50,7 +64,7 @@ const Navbar = ({ ...props }) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <IoMenu className="text-2xl" />
+          <IoMenu className="text-2xl bg-primary-light rounded-md" />
         </motion.button>
         <motion.div
           className={`${
@@ -67,6 +81,7 @@ const Navbar = ({ ...props }) => {
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
                   border: '1px solid rgba(255, 255, 255, 0.5)',
+                  zIndex: '1',
                 }
               : undefined
           }
@@ -90,12 +105,21 @@ const Navbar = ({ ...props }) => {
             whileTap={{ scale: 0.9 }}
             className={`${isOpen ? 'mt-4' : ''}`}
           >
-            <Link
-              to="/login"
-              className={`border-primary-light border-solid border-2 px-4 py-1 rounded-lg ${textColor} font-bold text-md`}
-            >
-              Entrar
-            </Link>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className={`border-primary-light border-solid border-2 px-4 py-1 rounded-lg ${textColor} font-bold text-md`}
+              >
+                Sair
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className={`border-primary-light border-solid border-2 px-4 py-1 rounded-lg ${textColor} font-bold text-md`}
+              >
+                Entrar
+              </Link>
+            )}
           </motion.div>
         </motion.div>
       </div>
