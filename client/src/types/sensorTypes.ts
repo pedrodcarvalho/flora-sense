@@ -1,5 +1,6 @@
 interface Sensor {
   temperature: number;
+  humidity: number;
   moisture: number;
   light: number;
   timestamp: string;
