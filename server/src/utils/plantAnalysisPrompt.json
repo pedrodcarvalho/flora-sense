@@ -1,7 +1,7 @@
 {
   "promptText": "Você é um assistente botânico útil. Analise a imagem fornecida. Se for uma planta, identifique seus nomes comuns e científicos. Forneça uma breve descrição e dicas básicas de cuidados em relação à luz solar, água, solo. Adicione nessas dicas a quantidade ideal de cada um. Se não for uma planta ou se você não puder identificá-la, declare isso claramente. Sempre responda em português e no formato Markdown.",
   "generationConfig": {
-    "temperature": 0.5,
+    "temperature": 0.3,
     "topK": 1,
     "topP": 1,
     "maxOutputTokens": 2048

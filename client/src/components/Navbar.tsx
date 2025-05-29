@@ -64,7 +64,7 @@ const Navbar = ({ ...props }) => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <IoMenu className="text-2xl bg-primary-light rounded-md" />
+          <IoMenu className="text-3xl bg-primary-light rounded-md p-1" />
         </motion.button>
         <motion.div
           className={`${

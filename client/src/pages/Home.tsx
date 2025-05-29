@@ -10,7 +10,9 @@ const Home = () => {
       <div className="flex-1 flex flex-col min-h-0">
         <Dashboard />
         <div className="md:block border-t mx-5 my-5"></div>
-        <PlantImageAnalyzer />
+        <div className="mx-5">
+          <PlantImageAnalyzer />
+        </div>
       </div>
       <Footer />
     </div>
