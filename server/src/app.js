@@ -8,6 +8,7 @@ const { Server } = require('socket.io');
 
 const sensorRoutes = require('./routes/sensorRoutes.js');
 const authRoutes = require('./routes/authRoutes.js');
+const plantInfoRoutes = require('./routes/plantInfoRoutes.js');
 const mqttClient = require('./config/mqtt.js');
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(
 // Routes
 app.use('/api/sensors', sensorRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/plants', plantInfoRoutes);
 
 // Start MQTT Client
 mqttClient;
