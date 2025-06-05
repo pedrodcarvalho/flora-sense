@@ -14,7 +14,10 @@ const Welcome = () => {
 
   return (
     <div className="bg-gradient-to-r from-primary-light to-primary">
-      <Navbar textColor="text-gray-50" />
+      <Navbar
+        textColor="text-gray-50"
+        navBgColor="bg-gradient-to-r from-primary-light to-primary"
+      />
       <motion.div className="flex flex-col md:flex-row items-center justify-center h-screen w-full gap-10 p-5">
         <motion.div
           className="flex flex-col gap-5 w-full md:w-96 text-center md:text-left"

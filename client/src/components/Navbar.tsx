@@ -10,7 +10,7 @@ import { IoMenu } from 'react-icons/io5';
 import Logo from '../assets/logo.png';
 
 const Navbar = ({ ...props }) => {
-  const { textColor } = props;
+  const { textColor, navBgColor } = props;
 
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.auth.user);
@@ -30,7 +30,7 @@ const Navbar = ({ ...props }) => {
 
   return (
     <motion.nav
-      className="bg-transparent p-4"
+      className={`${navBgColor ? navBgColor : 'bg-neutral-50'} p-4 fixed top-0 left-0 w-full z-50`}
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1 }}
