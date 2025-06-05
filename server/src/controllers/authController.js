@@ -8,15 +8,15 @@ const generateToken = (id) => {
 
 // User Registration
 const registerUser = async (req, res) => {
-  const { username, password } = req.body;
+  const { firstName, lastName, username, password } = req.body;
 
   try {
     const userExists = await User.findOne({ username });
     if (userExists) return res.status(400).json({ message: 'User already exists' });
 
-    const user = await User.create({ username, password });
+    const user = await User.create({ firstName, lastName, username, password });
     if (user) {
-      res.status(201).json({ _id: user.id, username: user.username, token: generateToken(user.id) });
+      res.status(201).json({ _id: user.id, firstName: user.firstName, lastName: user.lastName, username: user.username, token: generateToken(user.id) });
     } else {
       res.status(400).json({ message: 'Invalid user data' });
     }
@@ -32,7 +32,7 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ username });
     if (user && (await user.matchPassword(password))) {
-      res.json({ _id: user.id, username: user.username, token: generateToken(user.id) });
+      res.json({ _id: user.id, firstName: user.firstName, lastName: user.lastName, username: user.username, token: generateToken(user.id) });
     } else {
       res.status(401).json({ message: 'Invalid credentials' });
     }
@@ -41,4 +41,13 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser = (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      return res.status(500).json({ message: 'Could not log out' });
+    }
+    res.status(200).json({ message: 'Logged out successfully' });
+  });
+};
+
+module.exports = { registerUser, loginUser, logoutUser };

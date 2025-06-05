@@ -15,11 +15,6 @@ export default {
           DEFAULT: '#FFC107',
           dark: '#FF9800',
         },
-        accent: {
-          light: '#FFAB91',
-          DEFAULT: '#8B5A2B',
-          dark: '#795548',
-        },
         neutral: {
           50: '#F8F9FA',
           100: '#E9ECEF',
@@ -47,6 +42,9 @@ export default {
         '7xl': '4.5rem',
         '8xl': '6rem',
         '9xl': '8rem',
+      },
+      fontFamily: {
+        title: ['"Bebas Neue"', 'cursive'],
       },
       lineHeight: {
         normal: '1.5',

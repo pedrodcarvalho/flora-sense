@@ -7,6 +7,7 @@ const Sensor = mongoose.model(
     humidity: Number,
     moisture: Number,
     light: Number,
+    score: Number,
     timestamp: { type: Date, default: Date.now },
   })
 );
