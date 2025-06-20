@@ -1,3 +1,4 @@
+import { Box, Divider } from '@mui/material';
 import Dashboard from '../components/Dashboard';
 import PlantImageAnalyzer from '../components/PlantImageAnalyzer';
 import Navbar from '../components/Navbar';
@@ -5,17 +6,19 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <div>
+    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar textColor="text-gray-700" />
-      <div className="flex-1 flex flex-col min-h-0">
-        <Dashboard />
-        <div className="md:block border-t mx-5 my-5"></div>
-        <div className="mx-5">
+      <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <Box sx={{ mb: 6 }}>
+          <Dashboard />
+        </Box>
+        <Divider sx={{ mx: 2.5, my: 4 }} />
+        <Box sx={{ mx: 2.5, pb: 4 }}>
           <PlantImageAnalyzer />
-        </div>
-      </div>
+        </Box>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

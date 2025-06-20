@@ -1,30 +1,45 @@
+import { Box, Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <motion.footer
-      className="bg-slate-900 text-gray-200 p-4 text-center"
+    <Box
+      component={motion.footer}
+      sx={{
+        backgroundColor: 'grey.800',
+        color: 'grey.300',
+        p: 2,
+        textAlign: 'center'
+      }}
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <p>
+      <Typography variant="body2" sx={{ mb: 1 }}>
         &copy; {`${new Date().getFullYear()}`} FloraSense. Todos os direitos
         reservados.
-      </p>
-      <p>
-        Desenvolvido com ajuda das <span className="text-red-500">🌱</span> por{' '}
-        <motion.a
+      </Typography>
+      <Typography variant="body2">
+        Desenvolvido com ajuda das <span style={{ color: '#ef4444' }}>🌱</span> por{' '}
+        <Link
+          component={motion.a}
           href="https://github.com/pedrodcarvalho/"
           target="_blank"
-          className="text-primary font-extrabold underline"
-          whileHover={{ scale: 1.1, color: '#A7E9AF' }}
+          sx={{
+            color: 'primary.light',
+            fontWeight: 'bold',
+            textDecoration: 'underline',
+            '&:hover': {
+              color: 'primary.main'
+            }
+          }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
           Pedro Domitti
-        </motion.a>
-      </p>
-    </motion.footer>
+        </Link>
+      </Typography>
+    </Box>
   );
 };
 

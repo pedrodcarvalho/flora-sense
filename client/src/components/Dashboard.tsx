@@ -1,10 +1,18 @@
+import { Box } from '@mui/material';
 import Charts from './Charts';
 
 const Dashboard = () => {
   return (
-    <div className="h-screen flex flex-col flex-1 mx-5 mt-10">
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        mx: 2.5,
+        mt: 5,
+      }}
+    >
       <Charts />
-    </div>
+    </Box>
   );
 };
 

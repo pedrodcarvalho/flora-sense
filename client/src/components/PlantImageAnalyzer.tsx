@@ -87,7 +87,18 @@ const PlantImageAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="w-full sm:w-5/6 md:w-3/4 lg:w-1/2 xl:w-2/5 mx-auto mt-4 mb-10 bg-white rounded-xl shadow-md p-4">
+    <Box
+      sx={{
+        width: { xs: '100%', sm: '83.333%', md: '75%', lg: '50%', xl: '40%' },
+        mx: 'auto',
+        mt: 5,
+        mb: 10,
+        backgroundColor: 'background.paper',
+        borderRadius: 3,
+        boxShadow: 2,
+        p: 4
+      }}
+    >
       <Typography variant="h3" fontWeight="bold" component="h2" gutterBottom>
         <span className="text-primary underline">Flora</span>, sua assistente
         botânica inteligente!
@@ -216,7 +227,7 @@ const PlantImageAnalyzer: React.FC = () => {
           </Box>
         )}
       </Box>
-    </div>
+    </Box>
   );
 };
 

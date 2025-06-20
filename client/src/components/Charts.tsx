@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import { useSensorData } from '../hooks/useSensorData';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
@@ -21,19 +21,46 @@ export const Charts: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-10 mb-5 gap-4">
-        <div>
-          <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl text-gray-950">
+    <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'space-between',
+          alignItems: { xs: 'flex-start', md: 'center' },
+          mx: 7.5,
+          mb: 7.5,
+          gap: 2,
+        }}
+      >
+        <Box>
+          <Typography
+            variant="h3"
+            component="h1"
+            sx={{
+              fontWeight: 'bold',
+              fontSize: { xs: '1.875rem', sm: '2.25rem', lg: '3rem' },
+              color: 'grey.900',
+            }}
+          >
             Bem-vindo, {user?.firstName} {user?.lastName}!
-          </h1>
+          </Typography>
           <Typography variant="body1" color="text.secondary">
             Aqui você consegue visualizar os dados da sua planta em tempo real.
           </Typography>
-        </div>
+        </Box>
         <ModeToggle mode={mode} setMode={setMode} />
-      </div>
-      <div className="flex flex-wrap justify-center items-stretch gap-10 w-full overflow-x-auto pb-4">
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'stretch',
+          gap: 5,
+          width: '100%',
+        }}
+      >
         {TITLES.map((key, idx) => (
           <ChartCard
             key={propsKeys[idx] || key}
@@ -44,8 +71,8 @@ export const Charts: React.FC = () => {
             loading={loading}
           />
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

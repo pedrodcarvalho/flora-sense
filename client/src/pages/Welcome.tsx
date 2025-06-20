@@ -1,5 +1,7 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Button, Box, Typography } from '@mui/material';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -12,38 +14,94 @@ const Welcome = () => {
     navigate('/register');
   };
 
+  // Set initial body background to match navbar gradient
+  React.useEffect(() => {
+    const originalBackground = document.body.style.background;
+    document.body.style.background = 'linear-gradient(to right, #A7E9AF, #4CAF50)';
+
+    return () => {
+      document.body.style.background = originalBackground;
+    };
+  }, []);
+
   return (
-    <div className="bg-gradient-to-r from-primary-light to-primary">
+    <Box sx={{ background: 'linear-gradient(to right, #A7E9AF, #4CAF50)' }}>
       <Navbar
         textColor="text-gray-50"
         navBgColor="bg-gradient-to-r from-primary-light to-primary"
       />
-      <motion.div className="flex flex-col md:flex-row items-center justify-center h-screen w-full gap-10 p-5">
-        <motion.div
-          className="flex flex-col gap-5 w-full md:w-96 text-center md:text-left"
+      <Box
+        component={motion.div}
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh',
+          width: '100%',
+          gap: 5,
+          p: 2.5,
+        }}
+        initial={{ x: -400, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Box
+          component={motion.div}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2.5,
+            width: { xs: '100%', md: '384px' },
+            textAlign: { xs: 'center', md: 'left' },
+          }}
           initial={{ x: -400, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <motion.h1
-            className="font-title text-7xl md:text-9xl text-gray-200"
+          <Typography
+            component={motion.h1}
+            className="font-title text-neutral-200"
+            variant="h1"
+            sx={{
+              fontFamily: 'title',
+              fontSize: { xs: '4.5rem', md: '8rem' },
+            }}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
           >
             FloraSense
-          </motion.h1>
-          <motion.h2
-            className="text-xl text-gray-900 md:text-2xl font-bold text-center md:text-left"
+          </Typography>
+          <Typography
+            component={motion.h2}
+            variant="h5"
+            sx={{
+              color: 'grey.900',
+              fontSize: { xs: '1.25rem', md: '1.5rem' },
+              fontWeight: 'bold',
+              textAlign: { xs: 'center', md: 'left' },
+            }}
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            Fortalecendo <i className="text-gray-50 underline">plantas</i> com
-            inteligência – Monitore, Analise e Cuide sem esforço!
-          </motion.h2>
-          <motion.p
-            className="text-sm md:text-base text-gray-900"
+            Fortalecendo{' '}
+            <Box
+              component="i"
+              sx={{ color: 'grey.50', textDecoration: 'underline' }}
+            >
+              plantas
+            </Box>{' '}
+            com inteligência – Monitore, Analise e Cuide sem esforço!
+          </Typography>
+          <Typography
+            component={motion.p}
+            variant="body1"
+            sx={{
+              fontSize: { xs: '0.875rem', md: '1rem' },
+              color: 'grey.900',
+            }}
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
@@ -51,33 +109,46 @@ const Welcome = () => {
             FloraSense é seu melhor assistente de cuidados com plantas,
             fornecendo monitoramento em tempo real e insights personalizados
             para ajudar você a nutrir seus companheiros verdes.
-          </motion.p>
-          <motion.button
+          </Typography>
+          <Button
             onClick={handleGetStarted}
-            className="bg-[#13863f] p-2 rounded-lg"
+            variant="contained"
+            size="large"
+            component={motion.button}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            whileHover={{ scale: 1.1, backgroundColor: '#1a9d4b' }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            sx={{
+              backgroundColor: '#13863f',
+              color: 'white',
+              fontWeight: 'bold',
+              fontSize: '1.125rem',
+              textTransform: 'none',
+              borderRadius: '8px',
+              padding: '8px 16px',
+              '&:hover': {
+                backgroundColor: '#1a9d4b',
+              },
+            }}
           >
-            <span className="text-white font-bold text-lg">
-              Hora de plantar!
-            </span>
-          </motion.button>
-        </motion.div>
-        <motion.img
+            Hora de plantar!
+          </Button>
+        </Box>
+        <Box
+          component={motion.img}
           src={Plant}
-          className="w-64 md:w-96 object-cover"
+          sx={{ width: { xs: '256px', md: '384px' }, objectFit: 'cover' }}
           alt="Plant"
           loading="lazy"
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         />
-      </motion.div>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

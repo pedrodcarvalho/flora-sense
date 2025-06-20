@@ -44,49 +44,68 @@ const About = () => {
   };
 
   return (
-    <div className="!bg-neutral-50 !min-h-screen !flex !flex-col">
+    <Box
+      sx={{
+        backgroundColor: 'grey.50',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <Navbar textColor="text-gray-700" navBgColor="bg-neutral-100 shadow-md" />
-      <Container maxWidth="lg" className="!py-24 !flex-grow">
+      <Container maxWidth="lg" sx={{ py: 12, flexGrow: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Paper elevation={3} className="!p-6 !md:p-10 !rounded-xl !bg-white">
-            <Box className="!text-center !mb-8">
-              <img
+          <Paper
+            elevation={3}
+            sx={{
+              p: { xs: 3, md: 5 },
+              borderRadius: 3,
+              backgroundColor: 'background.paper',
+            }}
+          >
+            <Box sx={{ textAlign: 'center', mb: 4 }}>
+              <Box
+                component="img"
                 src={Logo}
                 alt="FloraSense Logo"
-                className="!w-24 !h-24 !mx-auto !mb-4"
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
               />
               <Typography
                 variant="h3"
                 component="h1"
-                className="!font-title !text-primary !mb-2"
+                className="font-title"
+                sx={{
+                  color: 'primary.main',
+                  mb: 1,
+                }}
               >
                 Sobre o FloraSense
               </Typography>
               <Typography
                 variant="h6"
                 color="textSecondary"
-                className="!italic"
+                sx={{ fontStyle: 'italic' }}
               >
                 Fortalecendo plantas com inteligência – Monitore, Analise e
                 Cuide sem esforço!
               </Typography>
             </Box>
 
-            <section className="!mb-8">
+            <section className="mb-8">
               <Typography
                 variant="h4"
                 component="h2"
-                className="!text-primary-dark !mb-3 !font-semibold"
+                className="text-primary-dark mb-3 font-semibold"
               >
                 Nossa Missão
               </Typography>
               <Typography
                 variant="body1"
-                className="!text-neutral-700 !leading-relaxed"
+                className="text-neutral-700 leading-relaxed"
               >
                 O FloraSense nasceu da paixão pela natureza e da tecnologia.
                 Nossa missão é simplificar o cuidado com as plantas, tornando-o
@@ -96,27 +115,27 @@ const About = () => {
               </Typography>
             </section>
 
-            <section className="!mb-8">
+            <section className="mb-8">
               <Typography
                 variant="h4"
                 component="h2"
-                className="!text-primary-dark !mb-4 !font-semibold"
+                className="text-primary-dark mb-4 font-semibold"
               >
                 Como Funciona: A Tecnologia por Trás da Magia Verde
               </Typography>
               <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Typography
                     variant="h5"
                     component="h3"
-                    className="!text-primary !mb-2"
+                    className="text-primary mb-2"
                   >
                     Frontend
                   </Typography>
                   <List dense>
                     <ListItem>
                       <ListItemIcon>
-                        <FaReact size={iconSize} className="!text-sky-500" />
+                        <FaReact size={iconSize} className="text-sky-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="React"
@@ -127,7 +146,7 @@ const About = () => {
                       <ListItemIcon>
                         <SiTypescript
                           size={iconSize}
-                          className="!text-blue-600"
+                          className="text-blue-600"
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -137,7 +156,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <SiVite size={iconSize} className="!text-purple-500" />
+                        <SiVite size={iconSize} className="text-purple-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="Vite"
@@ -146,7 +165,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <SiJest size={iconSize} className="!text-red-500" />
+                        <SiJest size={iconSize} className="text-red-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="Jest"
@@ -157,7 +176,7 @@ const About = () => {
                       <ListItemIcon>
                         <SiTailwindcss
                           size={iconSize}
-                          className="!text-teal-500"
+                          className="text-teal-500"
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -167,7 +186,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <SiRedux size={iconSize} className="!text-purple-700" />
+                        <SiRedux size={iconSize} className="text-purple-700" />
                       </ListItemIcon>
                       <ListItemText
                         primary="Redux"
@@ -176,7 +195,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <FaLeaf size={iconSize} className="!text-green-500" />
+                        <FaLeaf size={iconSize} className="text-green-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="MUI (Material-UI)"
@@ -185,18 +204,18 @@ const About = () => {
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Typography
                     variant="h5"
                     component="h3"
-                    className="!text-primary !mb-2"
+                    className="text-primary mb-2"
                   >
                     Backend
                   </Typography>
                   <List dense>
                     <ListItem>
                       <ListItemIcon>
-                        <FaNodeJs size={iconSize} className="!text-green-600" />
+                        <FaNodeJs size={iconSize} className="text-green-600" />
                       </ListItemIcon>
                       <ListItemText
                         primary="Node.js & Express"
@@ -207,7 +226,7 @@ const About = () => {
                       <ListItemIcon>
                         <FaDatabase
                           size={iconSize}
-                          className="!text-orange-500"
+                          className="text-orange-500"
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -219,7 +238,7 @@ const About = () => {
                       <ListItemIcon>
                         <SiSocketdotio
                           size={iconSize}
-                          className="!text-neutral-800"
+                          className="text-neutral-800"
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -229,21 +248,18 @@ const About = () => {
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Typography
                     variant="h5"
                     component="h3"
-                    className="!text-primary !mb-2"
+                    className="text-primary mb-2"
                   >
                     IoT (Internet das Coisas)
                   </Typography>
                   <List dense>
                     <ListItem>
                       <ListItemIcon>
-                        <FaMicrochip
-                          size={iconSize}
-                          className="!text-red-700"
-                        />
+                        <FaMicrochip size={iconSize} className="text-red-700" />
                       </ListItemIcon>
                       <ListItemText
                         primary="ESP32 (Microcontrolador)"
@@ -252,7 +268,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <FaCloud size={iconSize} className="!text-sky-600" />
+                        <FaCloud size={iconSize} className="text-sky-600" />
                       </ListItemIcon>
                       <ListItemText
                         primary="MQTT (Comunicação)"
@@ -261,10 +277,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <SiPython
-                          size={iconSize}
-                          className="!text-yellow-500"
-                        />
+                        <SiPython size={iconSize} className="text-yellow-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="C++ (Firmware)"
@@ -273,18 +286,18 @@ const About = () => {
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Typography
                     variant="h5"
                     component="h3"
-                    className="!text-primary !mb-2"
+                    className="text-primary mb-2"
                   >
                     Inteligência Artificial & Machine Learning
                   </Typography>
                   <List dense>
                     <ListItem>
                       <ListItemIcon>
-                        <FaBrain size={iconSize} className="!text-pink-500" />
+                        <FaBrain size={iconSize} className="text-pink-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="Google Gemini AI"
@@ -293,7 +306,7 @@ const About = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemIcon>
-                        <SiPython size={iconSize} className="!text-blue-500" />
+                        <SiPython size={iconSize} className="text-blue-500" />
                       </ListItemIcon>
                       <ListItemText
                         primary="Python"
@@ -304,7 +317,7 @@ const About = () => {
                       <ListItemIcon>
                         <SiTensorflow
                           size={iconSize}
-                          className="!text-orange-600"
+                          className="text-orange-600"
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -317,15 +330,15 @@ const About = () => {
               </Grid>
             </section>
 
-            <section className="!mb-8">
+            <section className="mb-8">
               <Typography
                 variant="h4"
                 component="h2"
-                className="!text-primary-dark !mb-3 !font-semibold"
+                className="text-primary-dark mb-3 font-semibold"
               >
                 Principais Funcionalidades
               </Typography>
-              <motion.ul className="!list-disc !list-inside !space-y-2 !text-neutral-700">
+              <motion.ul className="list-disc list-inside space-y-2 text-neutral-700">
                 {[
                   'Monitoramento em tempo real de umidade do solo, luz, temperatura e umidade do ar.',
                   'Dashboard intuitivo com gráficos para visualização dos dados da sua planta.',
@@ -346,15 +359,15 @@ const About = () => {
               </motion.ul>
             </section>
 
-            <section className="!text-center">
+            <section className="text-center">
               <Typography
                 variant="h4"
                 component="h2"
-                className="!text-primary-dark !mb-4 !font-semibold"
+                className="text-primary-dark mb-4 font-semibold"
               >
                 O Desenvolvedor
               </Typography>
-              <Box className="!flex !flex-col !items-center">
+              <Box className="flex flex-col items-center">
                 <Avatar
                   alt="Pedro Domitti"
                   src="https://avatars.githubusercontent.com/u/83586350"
@@ -362,7 +375,7 @@ const About = () => {
                 />
                 <Typography
                   variant="h6"
-                  className="!text-neutral-800 !font-medium"
+                  className="text-neutral-800 font-medium"
                 >
                   Pedro Domitti de Carvalho
                 </Typography>
@@ -373,7 +386,7 @@ const About = () => {
                 <motion.a
                   href="https://github.com/pedrodcarvalho/"
                   target="_blank"
-                  className="!text-primary !font-bold !underline !mt-2 !inline-block"
+                  className="text-primary font-bold underline mt-2 inline-block"
                   whileHover={{ scale: 1.05, color: '#2E7D32' }}
                 >
                   GitHub Profile
@@ -384,7 +397,7 @@ const About = () => {
         </motion.div>
       </Container>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

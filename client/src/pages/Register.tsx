@@ -53,11 +53,11 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-gray-50">
+    <Box sx={{ backgroundColor: 'grey.100' }}>
       <Navbar textColor="text-gray-700" />
       <Container
         maxWidth="sm"
-        className="h-screen flex items-center justify-center"
+        sx={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <Paper
           elevation={5}
@@ -148,11 +148,18 @@ const Register = () => {
               variant="contained"
               color="primary"
               type="submit"
+              fullWidth
+              size="large"
               sx={{
                 textTransform: 'none',
                 color: 'white',
                 fontSize: '1rem',
+                fontWeight: 'bold',
                 py: 1.5,
+                backgroundColor: '#4ade80',
+                '&:hover': {
+                  backgroundColor: '#16a34a',
+                },
               }}
             >
               Criar conta
@@ -161,7 +168,7 @@ const Register = () => {
         </Paper>
       </Container>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

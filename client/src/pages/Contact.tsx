@@ -65,55 +65,74 @@ const Contact = () => {
   };
 
   return (
-    <div className="!bg-neutral-50 !min-h-screen !flex !flex-col">
+    <Box
+      sx={{
+        backgroundColor: 'grey.50',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <Navbar textColor="text-gray-700" navBgColor="bg-neutral-100 shadow-md" />
-      <Container maxWidth="lg" className="!py-24 !flex-grow">
+      <Container maxWidth="lg" sx={{ py: 12, flexGrow: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Paper elevation={3} className="!p-6 !md:p-10 !rounded-xl !bg-white">
-            <Box className="!text-center !mb-8">
-              <img
+          <Paper
+            elevation={3}
+            sx={{
+              p: { xs: 3, md: 5 },
+              borderRadius: 3,
+              backgroundColor: 'background.paper',
+            }}
+          >
+            <Box sx={{ textAlign: 'center', mb: 4 }}>
+              <Box
+                component="img"
                 src={Logo}
                 alt="FloraSense Logo"
-                className="!w-24 !h-24 !mx-auto !mb-4"
+                sx={{ width: 96, height: 96, mx: 'auto', mb: 2 }}
               />
               <Typography
                 variant="h3"
                 component="h1"
-                className="!font-title !text-primary !mb-2"
+                className="font-title"
+                sx={{
+                  color: 'primary.main',
+                  mb: 1,
+                }}
               >
                 Entre em Contato
               </Typography>
               <Typography
                 variant="h6"
                 color="textSecondary"
-                className="!italic"
+                sx={{ fontStyle: 'italic' }}
               >
-                Vamos cultivar uma conversa juntos!
+                Vamos cultivar uma conversa juntos
               </Typography>
             </Box>
 
             <Grid container spacing={6}>
               {/* Contact Information */}
-              <Grid item xs={12} md={6}>
-                <section className="!mb-8">
+              <Grid size={{ xs: 12, md: 6 }}>
+                <section className="mb-8">
                   <Typography
                     variant="h4"
                     component="h2"
-                    className="!text-primary-dark !mb-4 !font-semibold"
+                    className="text-primary-dark mb-4 font-semibold"
                   >
                     Informações de Contato
                   </Typography>
                   <Typography
                     variant="body1"
-                    className="!text-neutral-700 !leading-relaxed !mb-6"
+                    className="text-neutral-700 leading-relaxed mb-6"
                   >
                     Tem alguma dúvida sobre o FloraSense? Quer reportar um bug
-                    ou sugerir uma nova funcionalidade? Estamos aqui para
-                    ajudar! Entre em contato conosco através dos canais abaixo.
+                    ou sugerir uma nova funcionalidade? Estamos aqui para ajudar
+                    Entre em contato conosco através dos canais abaixo.
                   </Typography>
 
                   <List dense>
@@ -125,7 +144,7 @@ const Contact = () => {
                     >
                       <ListItem>
                         <ListItemIcon>
-                          <FaEnvelope className="!text-primary" />
+                          <FaEnvelope className="text-primary" />
                         </ListItemIcon>
                         <ListItemText
                           primary="Email"
@@ -142,7 +161,7 @@ const Contact = () => {
                     >
                       <ListItem>
                         <ListItemIcon>
-                          <FaGithub className="!text-neutral-800" />
+                          <FaGithub className="text-neutral-800" />
                         </ListItemIcon>
                         <ListItemText
                           primary="GitHub"
@@ -150,7 +169,7 @@ const Contact = () => {
                             <motion.a
                               href="https://github.com/pedrodcarvalho/"
                               target="_blank"
-                              className="!text-primary !underline"
+                              className="text-primary underline"
                               whileHover={{ color: '#2E7D32' }}
                             >
                               @pedrodcarvalho
@@ -168,7 +187,7 @@ const Contact = () => {
                     >
                       <ListItem>
                         <ListItemIcon>
-                          <FaLinkedin className="!text-blue-600" />
+                          <FaLinkedin className="text-blue-600" />
                         </ListItemIcon>
                         <ListItemText
                           primary="LinkedIn"
@@ -176,7 +195,7 @@ const Contact = () => {
                             <motion.a
                               href="https://linkedin.com/in/pedro-carvalho-a92bab210/"
                               target="_blank"
-                              className="!text-primary !underline"
+                              className="text-primary underline"
                               whileHover={{ color: '#2E7D32' }}
                             >
                               Pedro Domitti de Carvalho
@@ -190,33 +209,39 @@ const Contact = () => {
               </Grid>
 
               {/* Contact Form */}
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <section>
                   <Typography
                     variant="h4"
                     component="h2"
-                    className="!text-primary-dark !mb-4 !font-semibold"
+                    className="text-primary-dark mb-4 font-semibold"
                   >
                     Envie uma Mensagem
                   </Typography>
 
                   {formSubmitted && (
-                    <motion.div
+                    <Box
+                      component={motion.div}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="!mb-4 !p-4 !bg-green-100 !border !border-green-400 !rounded !text-green-700"
+                      sx={{
+                        mb: 2,
+                        p: 2,
+                        backgroundColor: 'success.light',
+                        border: '1px solid',
+                        borderColor: 'success.main',
+                        borderRadius: 1,
+                        color: 'success.dark',
+                      }}
                     >
                       <Typography variant="body2">
-                        🌱 Mensagem enviada com sucesso! Entraremos em contato
-                        em breve.
+                        🌱 Mensagem enviada com sucesso Entraremos em contato em
+                        breve.
                       </Typography>
-                    </motion.div>
+                    </Box>
                   )}
 
-                  <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="!space-y-4"
-                  >
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <TextField
                       fullWidth
                       variant="outlined"
@@ -270,8 +295,16 @@ const Contact = () => {
                         textTransform: 'none',
                         color: 'white',
                         fontSize: '1rem',
+                        fontWeight: 'bold',
                         py: 1.5,
                         px: 4,
+                        backgroundColor: '#4ade80',
+                        '&:hover': {
+                          backgroundColor: '#16a34a',
+                        },
+                        '&:disabled': {
+                          backgroundColor: 'grey.400',
+                        },
                       }}
                     >
                       {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
@@ -281,27 +314,27 @@ const Contact = () => {
               </Grid>
             </Grid>
 
-            <section className="!mt-12 !text-center">
+            <section className="mt-12 text-center">
               <Typography
                 variant="h4"
                 component="h2"
-                className="!text-primary-dark !mb-4 !font-semibold"
+                className="text-primary-dark mb-4 font-semibold"
               >
                 Feedback e Contribuições
               </Typography>
               <Typography
                 variant="body1"
-                className="!text-neutral-700 !leading-relaxed !mb-4"
+                className="text-neutral-700 leading-relaxed mb-4"
               >
-                Sua contribuição é muito bem-vinda! Se você é desenvolvedor e
+                Sua contribuição é muito bem-vinda Se você é desenvolvedor e
                 quer ajudar a melhorar a plataforma, ou se você tem ideias para
                 novas funcionalidades, adoraríamos ouvir você.
               </Typography>
-              <motion.div className="!flex !justify-center !gap-4 !flex-wrap">
+              <motion.div className="flex justify-center gap-4 flex-wrap">
                 <motion.a
                   href="https://github.com/pedrodcarvalho/flora-sense"
                   target="_blank"
-                  className="!bg-neutral-800 !text-white !px-6 !py-3 !rounded-lg !font-semibold !no-underline"
+                  className="bg-neutral-800 text-white px-6 py-3 rounded-lg font-semibold no-underline"
                   whileHover={{ scale: 1.05, backgroundColor: '#1f2937' }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -310,7 +343,7 @@ const Contact = () => {
                 <motion.a
                   href="https://github.com/pedrodcarvalho/flora-sense/issues"
                   target="_blank"
-                  className="!bg-primary !text-white !px-6 !py-3 !rounded-lg !font-semibold !no-underline"
+                  className="bg-primary text-white px-6 py-3 rounded-lg font-semibold no-underline"
                   whileHover={{ scale: 1.05, backgroundColor: '#2E7D32' }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -322,7 +355,7 @@ const Contact = () => {
         </motion.div>
       </Container>
       <Footer />
-    </div>
+    </Box>
   );
 };
 
